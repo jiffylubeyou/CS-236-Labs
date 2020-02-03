@@ -115,7 +115,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DatalogProgram.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Parameter.cpp" />
+    <ClCompile Include="Predicate.cpp" />
+    <ClCompile Include="Rule.cpp" />
     <ClCompile Include="Token.cpp" />
     <ClCompile Include="Tokenizer.cpp" />
   </ItemGroup>
@@ -124,6 +128,10 @@
     <Text Include="Output.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DatalogProgram.h" />
+    <ClInclude Include="Parameter.h" />
+    <ClInclude Include="Predicate.h" />
+    <ClInclude Include="Rule.h" />
     <ClInclude Include="Token.h" />
     <ClInclude Include="Tokenizer.h" />
   </ItemGroup>
