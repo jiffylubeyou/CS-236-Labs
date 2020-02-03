@@ -19,7 +19,9 @@ string Tokenizer::scan()
 			Token token;
 			token.setType("COMMA");
 			token.setValue(",");
-			out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << lineNum << ")" << endl;
+			token.setLineVal(lineNum);
+			tokens.push_back(token);
+			out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << token.getLineVal() << ")" << endl;
 			total++;
 			in.ignore();
 		}
@@ -29,7 +31,9 @@ string Tokenizer::scan()
 			Token token;
 			token.setType("PERIOD");
 			token.setValue(".");
-			out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << lineNum << ")" << endl;
+			token.setLineVal(lineNum);
+			tokens.push_back(token);
+			out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << token.getLineVal() << ")" << endl;
 			total++;
 			in.ignore();
 		}
@@ -39,7 +43,9 @@ string Tokenizer::scan()
 			Token token;
 			token.setType("Q_MARK");
 			token.setValue("?");
-			out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << lineNum << ")" << endl;
+			token.setLineVal(lineNum);
+			tokens.push_back(token);
+			out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << token.getLineVal() << ")" << endl;
 			total++;
 			in.ignore();
 		}
@@ -49,7 +55,9 @@ string Tokenizer::scan()
 			Token token;
 			token.setType("LEFT_PAREN");
 			token.setValue("(");
-			out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << lineNum << ")" << endl;
+			token.setLineVal(lineNum);
+			tokens.push_back(token);
+			out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << token.getLineVal() << ")" << endl;
 			total++;
 			in.ignore();
 		}
@@ -59,7 +67,9 @@ string Tokenizer::scan()
 			Token token;
 			token.setType("RIGHT_PAREN");
 			token.setValue(")");
-			out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << lineNum << ")" << endl;
+			token.setLineVal(lineNum);
+			tokens.push_back(token);
+			out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << token.getLineVal() << ")" << endl;
 			total++;
 			in.ignore();
 		}
@@ -72,7 +82,9 @@ string Tokenizer::scan()
 				Token token;
 				token.setType("COLON_DASH");
 				token.setValue(":-");
-				out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << lineNum << ")" << endl;
+				token.setLineVal(lineNum);
+				tokens.push_back(token);
+				out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << token.getLineVal() << ")" << endl;
 				total++;
 				in.ignore();
 			}
@@ -81,7 +93,9 @@ string Tokenizer::scan()
 			Token token;
 			token.setType("COLON");
 			token.setValue(":");
-			out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << lineNum << ")" << endl;
+			token.setLineVal(lineNum);
+			tokens.push_back(token);
+			out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << token.getLineVal() << ")" << endl;
 			total++;
 			}
 		}
@@ -91,7 +105,9 @@ string Tokenizer::scan()
 		Token token;
 		token.setType("MULTIPLY");
 		token.setValue("*");
-		out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << lineNum << ")" << endl;
+		token.setLineVal(lineNum);
+		tokens.push_back(token);
+		out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << token.getLineVal() << ")" << endl;
 		total++;
 		in.ignore();
 		}
@@ -101,7 +117,9 @@ string Tokenizer::scan()
 		Token token;
 		token.setType("ADD");
 		token.setValue("+");
-		out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << lineNum << ")" << endl;
+		token.setLineVal(lineNum);
+		tokens.push_back(token);
+		out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << token.getLineVal() << ")" << endl;
 		total++;
 		in.ignore();
 		}
@@ -123,35 +141,45 @@ string Tokenizer::scan()
 		{
 			token.setType("SCHEMES");
 			token.setValue("Schemes");
-			out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << lineNum << ")" << endl;
+			token.setLineVal(lineNum);
+			tokens.push_back(token);
+			out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << token.getLineVal() << ")" << endl;
 			total++;
 		}
 		else if (tempString == "Facts")
 		{
 			token.setType("FACTS");
 			token.setValue("Facts");
-			out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << lineNum << ")" << endl;
+			token.setLineVal(lineNum);
+			tokens.push_back(token);
+			out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << token.getLineVal() << ")" << endl;
 			total++;
 		}
 		else if (tempString == "Rules")
 		{
 			token.setType("RULES");
 			token.setValue("Rules");
-			out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << lineNum << ")" << endl;
+			token.setLineVal(lineNum);
+			tokens.push_back(token);
+			out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << token.getLineVal() << ")" << endl;
 			total++;
 		}
 		else if (tempString == "Queries")
 		{
 			token.setType("QUERIES");
 			token.setValue("Queries");
-			out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << lineNum << ")" << endl;
+			token.setLineVal(lineNum);
+			tokens.push_back(token);
+			out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << token.getLineVal() << ")" << endl;
 			total++;
 		}
 		else
 		{
 			token.setType("ID");
 			token.setValue(tempString);
-			out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << lineNum << ")" << endl;
+			token.setLineVal(lineNum);
+			tokens.push_back(token);
+			out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << token.getLineVal() << ")" << endl;
 			total++;
 		}
 		}
@@ -171,7 +199,9 @@ string Tokenizer::scan()
 				{
 					token.setType("UNDEFINED");
 					token.setValue(tempString);
-					out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << endLineNum << ")" << endl;
+					token.setLineVal(endLineNum);
+					tokens.push_back(token);
+					out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << token.getLineVal() << ")" << endl;
 					total++;
 					isdefined = false;
 					break;
@@ -193,7 +223,9 @@ string Tokenizer::scan()
 				tempString.push_back('\'');
 				token.setType("STRING");
 				token.setValue(tempString);
-				out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << endLineNum << ")" << endl;
+				token.setLineVal(endLineNum);
+				tokens.push_back(token);
+				out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << token.getLineVal() << ")" << endl;
 				total++;
 				in.ignore();
 			}
@@ -202,7 +234,9 @@ string Tokenizer::scan()
 				Token token;
 				token.setType("EOF");
 				token.setValue("");
-				out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << lineNum << ")" << endl;
+				token.setLineVal(lineNum);
+				tokens.push_back(token);
+				out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << token.getLineVal() << ")" << endl;
 				total++;
 			}
 		}
@@ -226,7 +260,9 @@ string Tokenizer::scan()
 					{
 						token.setType("UNDEFINED");
 						token.setValue(tempString);
-						out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << endLineNum << ")" << endl;
+						token.setLineVal(endLineNum);
+						tokens.push_back(token);
+						out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << token.getLineVal() << ")" << endl;
 						total++;
 						isdefined = false;
 						break;
@@ -261,7 +297,9 @@ string Tokenizer::scan()
 					Token token;
 					token.setType("EOF");
 					token.setValue("");
-					out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << lineNum << ")" << endl;
+					token.setLineVal(lineNum);
+					tokens.push_back(token);
+					out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << token.getLineVal() << ")" << endl;
 					total++;
 				}
 			}
@@ -269,7 +307,9 @@ string Tokenizer::scan()
 			{
 				token.setType("COMMENT");
 				token.setValue(tempString);
-				out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << endLineNum << ")" << endl;
+				token.setLineVal(endLineNum);
+				tokens.push_back(token);
+				out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << token.getLineVal() << ")" << endl;
 				total++;
 			}
 		}
@@ -290,7 +330,9 @@ string Tokenizer::scan()
 			Token token;
 			token.setType("EOF");
 			token.setValue("");
-			out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << lineNum << ")" << endl;
+			token.setLineVal(lineNum);
+			tokens.push_back(token);
+			out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << token.getLineVal() << ")" << endl;
 			total++;
 			break;
 		}
@@ -304,7 +346,9 @@ string Tokenizer::scan()
 			tempString.push_back(asciiChar);
 			token.setType("UNDEFINED");
 			token.setValue(tempString);
-			out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << lineNum << ")" << endl;
+			token.setLineVal(lineNum);
+			tokens.push_back(token);
+			out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << token.getLineVal() << ")" << endl;
 			total++;
 		}
 	}

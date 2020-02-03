@@ -1,7 +1,11 @@
+#pragma once
 #include <iomanip>
 #include <sstream>
 #include <fstream>
+#include <vector>
+
 #include "Token.h"
+
 using namespace std;
 
 class Tokenizer
@@ -11,7 +15,12 @@ public:
 	~Tokenizer();
 
 	string scan();
+	vector<Token> getTokens()
+	{
+		return tokens;
+	}
 protected:
 	string fileName;
+	vector<Token> tokens;
 };
 

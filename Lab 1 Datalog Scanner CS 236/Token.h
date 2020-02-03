@@ -1,4 +1,6 @@
+#pragma once
 #include <iostream>
+#include <sstream>
 #include <sstream>
 
 using namespace std;
@@ -25,11 +27,24 @@ public:
 	{
 		return value;
 	}
+	void setLineVal(int lineNum)
+	{
+		this->lineNum = lineNum;
+	}
+	int getLineVal()
+	{
+		return lineNum;
+	}
 
-	//string toString(Token token, int lineNum);
-
+	string toString()
+	{
+		ostringstream out;
+		out << "(" << getType() << ",\"" << getValue() << "\"," << getLineVal() << ")" << endl;
+		return out.str();
+	}
 protected:
 	string type;
 	string value;
+	int lineNum;
 };
 
