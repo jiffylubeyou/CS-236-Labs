@@ -34,6 +34,8 @@ void DatalogProgram::match(string typeID)
 void DatalogProgram::scheme()
 {
 	match("ID");
+	Predicate newScheme;
+
 	match("LEFT_PAREN");
 	match("ID");
 	idList();

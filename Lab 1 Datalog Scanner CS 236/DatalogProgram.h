@@ -2,6 +2,9 @@
 #include <vector>
 #include "Token.h"
 #include "Tokenizer.h"
+#include "Predicate.h"
+#include "Parameter.h"
+#include "Rule.h"
 
 using namespace std;
 
@@ -36,5 +39,8 @@ public:
 protected:
 	int i = 0;
 	vector<Token> tokens;
+	vector<Predicate> schemes;
+	vector<Predicate> facts;
+	vector<Rule> rules;
 };
 
