@@ -39,6 +39,7 @@ public:
 protected:
 	int i = 0;
 	vector<Token> tokens;
+
 	vector<Predicate> schemes;
 	vector<Predicate> facts;
 	vector<Rule> rules;

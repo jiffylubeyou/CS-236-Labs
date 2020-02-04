@@ -1,10 +1,14 @@
 #pragma once
-#include "DatalogProgram.h"
+#include <vector>
+
+using namespace std;
 
 class Parameter
 {
 public:
 	Parameter();
 	~Parameter();
+protected:
+	string value;
 };
 
