@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <sstream>
 #include "Token.h"
 #include "Tokenizer.h"
 #include "Predicate.h"
@@ -34,7 +35,7 @@ public:
 	void expression();
 	void operatorasdf();
 
-	
+	string toString();
 
 protected:
 	int i = 0;
@@ -43,5 +44,9 @@ protected:
 	vector<Predicate> schemes;
 	vector<Predicate> facts;
 	vector<Rule> rules;
+	vector<Predicate> queries;
+	Predicate tempPredicate;
+	string tempParameter;
+	Rule tempRule;
 };
 

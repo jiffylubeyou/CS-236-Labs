@@ -14,6 +14,7 @@ int main(int argc, char** argv)
 	ofstream out(argv[2]);
 	string fileName = argv[1];
 	Tokenizer tokenizer(fileName);
+	bool passed = true;
 
 	tokenizer.scan();
 	DatalogProgram datalogprogram(tokenizer.getTokens());
@@ -23,8 +24,12 @@ int main(int argc, char** argv)
 	}
 	catch (Token t)
 	{
-		out << "Failure!" << endl << t.toString() << endl;
+		out << "Failure!" << endl << "  " << t.toString() << endl;
+		passed = false;
 	}
-	
+	if (passed)
+	{
+		out << datalogprogram.toString();
+	}
 	return 0;
 }
