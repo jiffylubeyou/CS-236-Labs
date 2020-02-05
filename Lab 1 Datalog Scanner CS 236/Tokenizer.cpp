@@ -308,9 +308,9 @@ string Tokenizer::scan()
 				token.setType("COMMENT");
 				token.setValue(tempString);
 				token.setLineVal(endLineNum);
-				tokens.push_back(token);
+				//tokens.push_back(token);
 				out << "(" << token.getType() << ",\"" << token.getValue() << "\"," << token.getLineVal() << ")" << endl;
-				total++;
+				//total++;
 			}
 		}
 

@@ -28,14 +28,14 @@ void DatalogProgram::datalogProgram()
 
 void DatalogProgram::match(string typeID)
 {
-	while (tokens.at(i).getType() == "COMMENT")
+	if (tokens.at(i).getType() == typeID)
 	{
 		i++;
 	}
-	if (tokens.at(i).getType() == typeID)
-		i++;
 	else
+	{
 		throw tokens.at(i);
+	}
 }
 
 void DatalogProgram::scheme()
@@ -192,9 +192,11 @@ void DatalogProgram::parameter()
 void DatalogProgram::expression()
 {
 	match("LEFT_PAREN");
+	tempParameter = "(" + tempParameter;
 	parameter();
 	operatorasdf();
 	parameter();
+	tempParameter = tempParameter + ")";
 	match("RIGHT_PAREN");
 }
 
