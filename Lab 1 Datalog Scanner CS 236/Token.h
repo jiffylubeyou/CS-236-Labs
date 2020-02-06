@@ -1,4 +1,5 @@
-#pragma once
+#ifndef TOKEN_H
+#define TOKEN_H
 #include <iostream>
 #include <sstream>
 #include <sstream>
@@ -47,4 +48,5 @@ protected:
 	string value;
 	int lineNum;
 };
+#endif
 

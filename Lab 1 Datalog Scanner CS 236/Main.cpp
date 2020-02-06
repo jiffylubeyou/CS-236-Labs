@@ -11,7 +11,7 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
-	ofstream out(argv[2]);
+	//ofstream out(argv[2]);
 	string fileName = argv[1];
 	Tokenizer tokenizer(fileName);
 	bool passed = true;
@@ -24,12 +24,12 @@ int main(int argc, char** argv)
 	}
 	catch (Token t)
 	{
-		out << "Failure!" << endl << "  " << t.toString() << endl;
+		cout << "Failure!" << endl << "  " << t.toString() << endl;
 		passed = false;
 	}
 	if (passed)
 	{
-		out << datalogprogram.toString();
+		cout << datalogprogram.toString();
 	}
 	return 0;
 }

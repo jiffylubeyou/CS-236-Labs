@@ -185,14 +185,14 @@ void DatalogProgram::parameter()
 	}
 	else
 	{
-		expression();
+		expression();	
 	}
 }
 
 void DatalogProgram::expression()
 {
 	match("LEFT_PAREN");
-	tempParameter = "(" + tempParameter;
+	tempParameter = tempParameter + "(";
 	parameter();
 	operatorasdf();
 	parameter();
@@ -204,8 +204,10 @@ void DatalogProgram::operatorasdf()
 {
 	if (tokens.at(i).getType() == "ADD")
 	{
+		
 		tempParameter = tempParameter + tokens.at(i).getValue();
 		match("ADD");
+		
 	}
 	else
 	{
@@ -267,35 +269,35 @@ string DatalogProgram::toString()
 	ostringstream out;
 	out << "Success!" << endl;
 	out << "Schemes(" << schemes.size() << "):" << endl;
-	for (int j = 0; j < schemes.size(); ++j)
+	for (unsigned int j = 0; j < schemes.size(); ++j)
 	{
 		out << "  " << schemes.at(j).toString() << endl;
 	}
 
 	out << "Facts(" << facts.size() << "):" << endl;
-	for (int j = 0; j < facts.size(); ++j)
+	for (unsigned int j = 0; j < facts.size(); ++j)
 	{
 		out << "  " << facts.at(j).toString() << "." << endl;
 	}
 
 	out << "Rules(" << rules.size() << "):" << endl;
-	for (int j = 0; j < rules.size(); ++j)
+	for (unsigned int j = 0; j < rules.size(); ++j)
 	{
 		out << "  " << rules.at(j).toString() << "." << endl;
 	}
 
 	out << "Queries(" << queries.size() << "):" << endl;
-	for (int j = 0; j < queries.size(); ++j)
+	for (unsigned int j = 0; j < queries.size(); ++j)
 	{
 		out << "  " << queries.at(j).toString() << "?" << endl;
 	}
 
 	//filter out the repeats
 	vector<string> domains;
-	for (int j = 0; j < facts.size(); ++j)
+	for (unsigned int j = 0; j < facts.size(); ++j)
 	{
 		vector<Parameter> tempParameterVector = facts.at(j).getParameters();
-		for (int k = 0; k < tempParameterVector.size(); ++k)
+		for (unsigned int k = 0; k < tempParameterVector.size(); ++k)
 		{
 			if (domains.size() == 0)
 			{
@@ -303,7 +305,7 @@ string DatalogProgram::toString()
 			}
 			else {
 				bool matched = false;
-				for (int l = 0; l < domains.size(); ++l)
+				for (unsigned int l = 0; l < domains.size(); ++l)
 				{
 					if (tempParameterVector.at(k).getValue() == domains.at(l))
 					{
@@ -319,7 +321,7 @@ string DatalogProgram::toString()
 	}
 	sort(domains.begin(), domains.end());
 	out << "Domain(" << domains.size() << "):" << endl;
-	for (int j = 0; j < domains.size(); ++j)
+	for (unsigned int j = 0; j < domains.size(); ++j)
 	{
 		out << "  " << domains.at(j) << endl;
 	}

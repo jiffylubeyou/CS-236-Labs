@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PREDICATE_H
+#define PREDICATE_H
 #include <vector>
 #include <sstream>
 #include "Parameter.h"
@@ -40,7 +41,7 @@ public:
 	{
 		ostringstream out;
 		out << name << "(";
-		for (int i = 0; i < parameters.size(); i++)
+		for (unsigned int i = 0; i < parameters.size(); i++)
 		{
 			out << parameters.at(i).getValue();
 			if (i != parameters.size() - 1)
@@ -56,4 +57,5 @@ protected:
 	string name;
 	vector<Parameter> parameters;
 };
+#endif
 

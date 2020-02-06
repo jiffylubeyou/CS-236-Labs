@@ -1,5 +1,7 @@
-#pragma once
+#ifndef PARAMETER_H
+#define PARAMETER_H
 #include <vector>
+#include <string>
 
 using namespace std;
 
@@ -21,4 +23,5 @@ public:
 protected:
 	string myValue;
 };
+#endif
 

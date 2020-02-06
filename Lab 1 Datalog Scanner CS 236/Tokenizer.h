@@ -1,4 +1,5 @@
-#pragma once
+#ifndef TOKENIZER_H
+#define TOKENIZER_H
 #include <iomanip>
 #include <sstream>
 #include <fstream>
@@ -23,4 +24,5 @@ protected:
 	string fileName;
 	vector<Token> tokens;
 };
+#endif
 

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef RULE_H
+#define RULE_H
 #include <vector>
 #include <sstream>
 #include "Predicate.h"
@@ -36,7 +37,7 @@ public:
 		ostringstream out;
 		out << headPredicate.toString();
 		out << " :- ";
-		for (int i = 0; i < predicates.size(); i++)
+		for (unsigned int i = 0; i < predicates.size(); i++)
 		{
 			out << predicates.at(i).toString();
 			if (i != predicates.size() - 1)
@@ -50,4 +51,5 @@ protected:
 	Predicate headPredicate;
 	vector<Predicate> predicates;
 };
+#endif
 
