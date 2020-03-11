@@ -2,6 +2,10 @@
 #include <algorithm>
 
 
+DatalogProgram::DatalogProgram()
+{
+}
+
 DatalogProgram::~DatalogProgram()
 {
 }

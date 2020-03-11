@@ -4,5 +4,6 @@ class Scheme
 public:
 	Scheme();
 	~Scheme();
+private:
 };
 

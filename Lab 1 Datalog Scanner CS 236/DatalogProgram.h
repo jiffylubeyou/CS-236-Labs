@@ -13,6 +13,7 @@ class DatalogProgram
 {
 public:
 	DatalogProgram(vector<Token> tokens) { this->tokens = tokens; }
+	DatalogProgram();
 	~DatalogProgram();
 
 	void datalogProgram();
@@ -34,6 +35,10 @@ public:
 	void parameter();
 	void expression();
 	void operatorasdf();
+	vector<Predicate> getSchemes() { return schemes; }
+	vector<Predicate> getFacts() { return facts; }
+	vector<Rule> getRules() { return rules; }
+	vector<Predicate> getQueries() { return queries; }
 
 	string toString();
 
