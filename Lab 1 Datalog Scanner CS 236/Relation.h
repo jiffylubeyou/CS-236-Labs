@@ -24,15 +24,15 @@ public:
 	{
 		ostringstream out;
 		for (Tuple tuple : tuples) {
-			for (unsigned int i = 0; i < tuple.size() - 1; ++i)
+			for (unsigned int i = 0; i < scheme.size(); ++i)
 			{
-				out << scheme.at(i) << "='" << tuple.at(i);
+				out << scheme.at(i) << "=" << tuple.at(i);
 				if (i != tuple.size() - 1)
 				{
 					out << ",";
 				}
-				out << endl;
 			}
+			out << endl;
 		}
 		return out.str();
 	}

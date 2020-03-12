@@ -5,7 +5,7 @@
 #include <vector>
 
 //#include "Tokenizer.h"
-#include "DatalogProgram.h"
+#include "Interpreter.h"
 
 using namespace std;
 
@@ -18,6 +18,7 @@ int main(int argc, char** argv)
 
 	tokenizer.scan();
 	DatalogProgram datalogprogram(tokenizer.getTokens());
+	Interpreter interpreter(datalogprogram);
 	try
 	{
 		datalogprogram.datalogProgram();

@@ -1,3 +1,6 @@
+#ifndef DATALOGPROGRAM_H
+#define DATALOGPROGRAM_H
+
 #include <iostream>
 #include <vector>
 #include <sstream>
@@ -55,3 +58,4 @@ protected:
 	Rule tempRule;
 };
 
+#endif
