@@ -37,6 +37,16 @@ public:
 		return parameters;
 	}
 
+	unsigned int size()
+	{
+		return parameters.size();
+	}
+
+	string at(int index)
+	{
+		return parameters.at(index).getValue();
+	}
+
 	string toString()
 	{
 		ostringstream out;
@@ -56,6 +66,7 @@ public:
 protected:
 	string name;
 	vector<Parameter> parameters;
+	int counter;
 };
 #endif
 

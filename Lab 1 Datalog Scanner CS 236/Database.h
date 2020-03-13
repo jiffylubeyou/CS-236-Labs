@@ -18,6 +18,11 @@ public:
 		relationMap.insert(pair<string, Relation>(name, relation));
 	}
 
+	Relation returnRelation(string string)
+	{
+		return this->relationMap.find(string)->second;
+	}
+
 	string toString()
 	{
 		ostringstream out;

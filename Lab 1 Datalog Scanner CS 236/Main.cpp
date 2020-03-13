@@ -18,7 +18,6 @@ int main(int argc, char** argv)
 
 	tokenizer.scan();
 	DatalogProgram datalogprogram(tokenizer.getTokens());
-	Interpreter interpreter(datalogprogram);
 	try
 	{
 		datalogprogram.datalogProgram();
@@ -28,9 +27,7 @@ int main(int argc, char** argv)
 		cout << "Failure!" << endl << "  " << t.toString() << endl;
 		passed = false;
 	}
-	if (passed)
-	{
-		cout << datalogprogram.toString();
-	}
+	Interpreter interpreter(datalogprogram);
+	cout << interpreter.EvaluateAll();
 	return 0;
 }
