@@ -31,6 +31,7 @@ public:
 			out << element.first << endl;
 			out << element.second.toString() << endl;
 		}
+		return out.str();
 	}
 private:
 	map<string, Relation> relationMap;

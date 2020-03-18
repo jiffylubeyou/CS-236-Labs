@@ -14,7 +14,6 @@ int main(int argc, char** argv)
 	//ofstream out(argv[2]);
 	string fileName = argv[1];
 	Tokenizer tokenizer(fileName);
-	bool passed = true;
 
 	tokenizer.scan();
 	DatalogProgram datalogprogram(tokenizer.getTokens());
@@ -25,7 +24,6 @@ int main(int argc, char** argv)
 	catch (Token t)
 	{
 		cout << "Failure!" << endl << "  " << t.toString() << endl;
-		passed = false;
 	}
 	Interpreter interpreter(datalogprogram);
 	cout << interpreter.EvaluateAll();

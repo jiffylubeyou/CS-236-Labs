@@ -19,6 +19,7 @@ public:
 		{
 			out << at(i);
 		}
+		return out.str();
 	}
 };
 
