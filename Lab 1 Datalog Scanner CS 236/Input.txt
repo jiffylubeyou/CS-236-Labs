@@ -1,15 +1,9 @@
 Schemes:
-  SK(A,B)
+  bob(A)
+
 Facts:
-  SK('a','c').
-  SK('b','c').
-  SK('b','b').
-  SK('b','c').
+
 Rules:
 
 Queries:
-  SK(X,'c')?
-  SK('b','c')?
-  SK(X,X)?
-  SK(X,Y)?
-  SK('c','c')?
+  bob(A)?

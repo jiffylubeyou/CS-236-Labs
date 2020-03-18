@@ -87,7 +87,14 @@ public:
 					out << ",";
 				}
 			}
-			out << endl;
+			if (tuple.size() != 0)
+			{
+				out << endl;
+			}
+			else
+			{
+				return "";
+			}
 		}
 		return out.str();
 	}
