@@ -69,6 +69,8 @@ public:
 		return tempRelation;
 	}
 
+	Predicate getScheme() { return this->scheme; }
+
 	int getNumTuples()
 	{
 		return tuples.size();
@@ -98,6 +100,9 @@ public:
 		}
 		return out.str();
 	}
+
+	Relation join(Relation relation);
+
 private:
 	Predicate scheme;
 	set<Tuple> tuples;
