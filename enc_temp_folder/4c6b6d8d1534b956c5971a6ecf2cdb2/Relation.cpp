@@ -44,6 +44,8 @@ Relation Relation::join(Relation relation)
 			}
 		}
 	}
+
+	
 	
 	return newRelation;
 }
