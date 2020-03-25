@@ -84,7 +84,7 @@ string Interpreter::EvaluateAll()
 			out << "Yes(" << tempRelation.getNumTuples() << ")" << endl;
 			out << tempRelation.toString();
 		}
-		//EvaluateQuery(queries.at(i)).join(EvaluateQuery(queries.at(i + 1))); // get rid of meee
+		EvaluateQuery(queries.at(i)).join(EvaluateQuery(queries.at(i + 1))); // get rid of meee
 	}
 	return out.str();
 }

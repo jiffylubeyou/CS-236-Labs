@@ -70,6 +70,7 @@ public:
 	}
 
 	Predicate getScheme() { return this->scheme; }
+	set<Tuple> getTuples() { return tuples; }
 
 	int getNumTuples()
 	{
@@ -102,6 +103,7 @@ public:
 	}
 
 	Relation join(Relation relation);
+	bool isJoinable(Predicate scheme1, Predicate scheme2, Tuple tuple1, Tuple tuple2);
 
 private:
 	Predicate scheme;
