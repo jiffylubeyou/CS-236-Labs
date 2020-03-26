@@ -23,6 +23,12 @@ public:
 		return this->relationMap.find(string)->second;
 	}
 
+	void addTupleToRelation(string string, Tuple tuple)
+	{
+		relationMap.at(string).addTuple(tuple);
+		++total;
+	}
+
 	string toString()
 	{
 		ostringstream out;
@@ -34,9 +40,10 @@ public:
 		return out.str();
 	}
 	
-	int getNumDatabaseTuples();
+	int getNumDatabaseTuples() { return total; }
 private:
 	map<string, Relation> relationMap;
+	int total;
 };
 
 #endif

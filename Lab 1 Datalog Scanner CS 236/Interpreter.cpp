@@ -82,7 +82,11 @@ void Interpreter::EvaluateRule(Rule rule)
 		tempRelation = tempRelation.join(relations.at(i));
 	}
 	tempRelation = tempRelation.projectHeadPredicate(rule.getHeadPredicate());
-
+	tempRelation = tempRelation.rename(database.returnRelation(rule.getHeadPredicate().getName()).getScheme());
+	for (Tuple tuple : tempRelation.getTuples())
+	{
+		database.addTupleToRelation(rule.getHeadPredicate().getName(), tuple);
+	}
 }
 
 
