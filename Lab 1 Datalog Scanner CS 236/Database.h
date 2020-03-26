@@ -33,6 +33,8 @@ public:
 		}
 		return out.str();
 	}
+	
+	int getNumDatabaseTuples();
 private:
 	map<string, Relation> relationMap;
 };

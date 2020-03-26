@@ -26,6 +26,7 @@ int main(int argc, char** argv)
 		cout << "Failure!" << endl << "  " << t.toString() << endl;
 	}
 	Interpreter interpreter(datalogprogram);
+	//interpreter.evalruesl
 	cout << interpreter.EvaluateAll();
 	return 0;
 }

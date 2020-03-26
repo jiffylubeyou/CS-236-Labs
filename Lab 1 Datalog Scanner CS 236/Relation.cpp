@@ -5,6 +5,23 @@ Relation::~Relation()
 {
 }
 
+Relation Relation::projectHeadPredicate(Predicate predicate)
+{
+	//predicate here is the head predicate for a rule
+	vector<int> toKeep;
+	for (unsigned int i = 0; i < predicate.size(); ++i)
+	{
+		for (unsigned int j = 0; j < this->scheme.size(); ++j)
+		{
+			if (predicate.at(i) == this->scheme.at(j))
+			{
+				toKeep.push_back(j);
+			}
+		}
+	}
+	return this->project(toKeep);
+}
+
 Relation Relation::join(Relation relation)
 {
 	//gets newRelation scheme

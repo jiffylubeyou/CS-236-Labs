@@ -62,6 +62,8 @@ public:
 		return tempRelation;
 	}
 
+	Relation projectHeadPredicate(Predicate predicate);
+
 	Relation rename(Predicate predicate)
 	{
 		Relation tempRelation(name, predicate);

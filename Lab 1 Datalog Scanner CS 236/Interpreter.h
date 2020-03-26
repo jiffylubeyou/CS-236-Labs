@@ -21,6 +21,7 @@ public:
 	void populateInterpreter();
 	void populateDatabase();
 	Relation EvaluateQuery(Predicate query);
+	void EvaluateRule(Rule rule);
 	string EvaluateAll();
 
 protected:

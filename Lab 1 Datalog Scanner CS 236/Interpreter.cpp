@@ -68,6 +68,24 @@ Relation Interpreter::EvaluateQuery(Predicate query)
 	return tempRelation;
 }
 
+void Interpreter::EvaluateRule(Rule rule)
+{
+	vector<Relation> relations;
+	vector<Predicate> predicates = rule.getPredicates();
+	for (unsigned int i = 0; i < rule.getPredicates().size(); ++i)
+	{
+		relations.push_back(EvaluateQuery(predicates.at(i)));
+	}
+	Relation tempRelation = relations.at(0);
+	for (unsigned int i = 1; i < relations.size(); ++i)
+	{
+		tempRelation = tempRelation.join(relations.at(i));
+	}
+	tempRelation = tempRelation.projectHeadPredicate(rule.getHeadPredicate());
+
+}
+
+
 string Interpreter::EvaluateAll()
 {
 	ostringstream out;

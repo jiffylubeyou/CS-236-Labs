@@ -32,6 +32,8 @@ public:
 		predicates.clear();
 	}
 
+	vector<Predicate> getPredicates() { return this->predicates; }
+
 	string toString()
 	{
 		ostringstream out;
