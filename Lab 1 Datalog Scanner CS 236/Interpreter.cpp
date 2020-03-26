@@ -89,9 +89,31 @@ void Interpreter::EvaluateRule(Rule rule)
 	}
 }
 
+void Interpreter::EvaluateRules()
+{
+	unsigned int oldTotal = 0;
+	unsigned int newTotal = 0;
+	bool change = true;
+	while (change)
+	{
+		oldTotal = database.getNumDatabaseTuples();
+		for (unsigned int i = 0; i < rules.size(); ++i)
+		{
+			EvaluateRule(rules.at(i));
+		}
+		newTotal = database.getNumDatabaseTuples();
+		if (newTotal == oldTotal)
+		{
+			change = false;
+		}
+	}
+	return;
+}
+
 
 string Interpreter::EvaluateAll()
 {
+	EvaluateRules();
 	ostringstream out;
 	for (unsigned int i = 0; i < queries.size(); ++i)
 	{
@@ -106,7 +128,6 @@ string Interpreter::EvaluateAll()
 			out << "Yes(" << tempRelation.getNumTuples() << ")" << endl;
 			out << tempRelation.toString();
 		}
-		EvaluateQuery(queries.at(i)).join(EvaluateQuery(queries.at(i + 1))); // get rid of meee
 	}
 	return out.str();
 }
