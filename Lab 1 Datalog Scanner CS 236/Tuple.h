@@ -15,9 +15,14 @@ public:
 	string toString()
 	{
 		ostringstream out;
+		out << " ";
 		for (unsigned int i = 0; i < size(); ++i)
 		{
 			out << at(i);
+			if (i != this->size() - 1)
+			{
+				out << ",";
+			}
 		}
 		return out.str();
 	}

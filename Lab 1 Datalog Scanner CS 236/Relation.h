@@ -21,6 +21,33 @@ public:
 		tuples.insert(tuple);
 	}
 
+	string addRuleTuple(Tuple tuple)
+	{
+		ostringstream out;
+		if (tuples.insert(tuple).second)
+		{
+			tuples.insert(tuple);
+			out << " ";
+			for (unsigned int i = 0; i < this->scheme.size(); ++i)
+			{
+				out << " " << this->scheme.at(i) << "=" << tuple.at(i);
+				if (i != tuple.size() - 1)
+				{
+					out << ",";
+				}
+			}
+			if (tuple.size() != 0)
+			{
+				out << endl;
+			}
+			else
+			{
+				return "";
+			}
+		}
+		return out.str();
+	}
+
 	Relation select(string value, int index)
 	{
 		Relation tempRelation(this->name, this->scheme);

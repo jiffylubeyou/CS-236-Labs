@@ -68,8 +68,9 @@ Relation Interpreter::EvaluateQuery(Predicate query)
 	return tempRelation;
 }
 
-void Interpreter::EvaluateRule(Rule rule)
+string Interpreter::EvaluateRule(Rule rule)
 {
+	ostringstream out;
 	vector<Relation> relations;
 	vector<Predicate> predicates = rule.getPredicates();
 	for (unsigned int i = 0; i < rule.getPredicates().size(); ++i)
@@ -81,25 +82,33 @@ void Interpreter::EvaluateRule(Rule rule)
 	{
 		tempRelation = tempRelation.join(relations.at(i));
 	}
+
 	tempRelation = tempRelation.projectHeadPredicate(rule.getHeadPredicate());
 	tempRelation = tempRelation.rename(database.returnRelation(rule.getHeadPredicate().getName()).getScheme());
+
 	for (Tuple tuple : tempRelation.getTuples())
 	{
-		database.addTupleToRelation(rule.getHeadPredicate().getName(), tuple);
+		out << database.addTupleToRelation(rule.getHeadPredicate().getName(), tuple);
 	}
+	return out.str();
 }
 
-void Interpreter::EvaluateRules()
+string Interpreter::EvaluateRules()
 {
+	ostringstream out;
+	out << "Rule Evaluation" << endl;
 	unsigned int oldTotal = 0;
 	unsigned int newTotal = 0;
 	bool change = true;
+	int numWhileLoops = 0;
 	while (change)
 	{
+		numWhileLoops++;
 		oldTotal = database.getNumDatabaseTuples();
 		for (unsigned int i = 0; i < rules.size(); ++i)
 		{
-			EvaluateRule(rules.at(i));
+			out << rules.at(i).toString() << "." << endl;
+			out << EvaluateRule(rules.at(i));
 		}
 		newTotal = database.getNumDatabaseTuples();
 		if (newTotal == oldTotal)
@@ -107,14 +116,16 @@ void Interpreter::EvaluateRules()
 			change = false;
 		}
 	}
-	return;
+	out << endl << "Schemes populated after " << numWhileLoops << " passes through the Rules." << endl << endl;
+	return out.str();
 }
 
 
 string Interpreter::EvaluateAll()
 {
-	EvaluateRules();
 	ostringstream out;
+	out << EvaluateRules();
+	out << "Query Evaluation" << endl;
 	for (unsigned int i = 0; i < queries.size(); ++i)
 	{
 		out << queries.at(i).toString() << "? ";

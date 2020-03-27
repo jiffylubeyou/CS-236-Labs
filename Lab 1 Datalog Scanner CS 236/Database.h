@@ -23,10 +23,9 @@ public:
 		return this->relationMap.find(string)->second;
 	}
 
-	void addTupleToRelation(string string, Tuple tuple)
+	string addTupleToRelation(string string, Tuple tuple)
 	{
-		relationMap.at(string).addTuple(tuple);
-		++total;
+		return relationMap.at(string).addRuleTuple(tuple);
 	}
 
 	string toString()
@@ -40,10 +39,18 @@ public:
 		return out.str();
 	}
 	
-	int getNumDatabaseTuples() { return total; }
+	int getNumDatabaseTuples() 
+	{
+		int total = 0;
+		for (pair<string, Relation> element : relationMap)
+		{
+			total += element.second.getNumTuples();
+		}
+		return total;
+	}
+
 private:
 	map<string, Relation> relationMap;
-	int total;
 };
 
 #endif

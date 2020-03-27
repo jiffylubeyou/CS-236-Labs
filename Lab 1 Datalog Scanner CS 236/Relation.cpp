@@ -55,7 +55,7 @@ Relation Relation::join(Relation relation)
 				Tuple tempTuple = tuple;
 				for (unsigned int i = 0; i < tupleIndices.size(); ++i)
 				{
-					tempTuple.push_back(secondTuple.at(i));
+					tempTuple.push_back(secondTuple.at(tupleIndices.at(i)));
 				}
 				newRelation.addTuple(tempTuple);
 			}
